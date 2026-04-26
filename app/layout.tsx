@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     canonical: '/'
   },
   title: {
-    default: 'John Smith',
-    template: '%s | John Smith'
+    default: 'Dchef',
+    template: '%s | Dchef'
   },
-  description: 'My portfolio, blog, and personal website.'
+  description: 'Builder, creator, and life lover.'
 };
 
 export default function RootLayout({
@@ -38,28 +38,5 @@ export default function RootLayout({
 }
 
 function Footer() {
-  const links = [
-    { name: '@johnsmith', url: 'https://x.com/johnsmith' },
-    { name: 'youtube', url: 'https://www.youtube.com/@johnsmith' },
-    { name: 'linkedin', url: 'https://www.linkedin.com/in/johnsmith' },
-    { name: 'github', url: 'https://github.com/johnsmith' }
-  ];
-
-  return (
-    <footer className="mt-12 text-center">
-      <div className="flex justify-center space-x-4 tracking-tight">
-        {links.map((link) => (
-          <a
-            key={link.name}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors duration-200"
-          >
-            {link.name}
-          </a>
-        ))}
-      </div>
-    </footer>
-  );
+  return null;
 }
