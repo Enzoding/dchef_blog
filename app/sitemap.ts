@@ -22,14 +22,20 @@ async function getNoteSlugs(dir: string) {
 
 export default async function sitemap() {
   const notesDirectory = path.join(process.cwd(), 'app', 'n');
-  const slugs = await getNoteSlugs(notesDirectory);
+  
+  let notes: { url: string; lastModified: string }[] = [];
+  
+  try {
+    const slugs = await getNoteSlugs(notesDirectory);
+    notes = slugs.map((slug) => ({
+      url: `${SITE_URL}/n/${slug}`,
+      lastModified: new Date().toISOString()
+    }));
+  } catch (error) {
+    // app/n directory doesn't exist, skip notes
+  }
 
-  const notes = slugs.map((slug) => ({
-    url: `${SITE_URL}/n/${slug}`,
-    lastModified: new Date().toISOString()
-  }));
-
-  const routes = ['', '/work'].map((route) => ({
+  const routes = [''].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: new Date().toISOString()
   }));
